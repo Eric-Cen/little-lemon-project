@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./images/Logo.svg";
 import "./Nav.css";
+import { Link } from "react-router-dom";
 
 const Nav: React.FC<{}> = () => {
   return (
@@ -8,10 +9,10 @@ const Nav: React.FC<{}> = () => {
       <img src={logo} alt="restaurant logo" width="202" />
       <ul>
         <li>
-          <a href="index.html">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li>
           <a href="#">Menu</a>
@@ -24,6 +25,9 @@ const Nav: React.FC<{}> = () => {
         </li>
         <li>
           <a href="#">Login</a>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
         </li>
       </ul>
     </nav>
