@@ -1,11 +1,12 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import BookingForm from "./BookingForm";
+import BookingForm from "../BookingForm";
 
 describe("BookingForm Component", () => {
   const mockAvailableTimes = ["17:00", "18:00", "19:00", "20:00"];
   const mockSetFormData = jest.fn();
+  const mockSubmitForm = jest.fn();
   const mockFormData = {
     date: "",
     time: "17:00",
@@ -19,6 +20,7 @@ describe("BookingForm Component", () => {
         availableTimes={mockAvailableTimes}
         formData={mockFormData}
         setFormData={mockSetFormData}
+        submitForm={mockSubmitForm}
       />
     );
 
@@ -40,6 +42,7 @@ describe("BookingForm Component", () => {
         availableTimes={mockAvailableTimes}
         formData={mockFormData}
         setFormData={mockSetFormData}
+        submitForm={mockSubmitForm}
       />
     );
 
@@ -82,5 +85,23 @@ describe("BookingForm Component", () => {
         occasion: "Anniversary",
       });
     }
+  });
+
+  test("calls submitForm on form submission", () => {
+    render(
+      <BookingForm
+        availableTimes={mockAvailableTimes}
+        formData={mockFormData}
+        setFormData={mockSetFormData}
+        submitForm={mockSubmitForm}
+      />
+    );
+
+    // Simulate form submission
+    const form = screen.getByRole("form");
+    fireEvent.submit(form);
+
+    // Ensure submitForm was called with the correct form data
+    expect(mockSubmitForm).toHaveBeenCalledWith(mockFormData);
   });
 });

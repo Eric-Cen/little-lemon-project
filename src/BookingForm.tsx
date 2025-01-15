@@ -16,12 +16,19 @@ interface BookingFormProps {
       occasion: string;
     }>
   >;
+  submitForm: (data: {
+    date: string;
+    time: string;
+    guests: number;
+    occasion: string;
+  }) => void;
 }
 
 const BookingForm: React.FC<BookingFormProps> = ({
   availableTimes,
   formData,
   setFormData,
+  submitForm,
 }) => {
   // Handle input changes
   const handleChange = (
@@ -37,11 +44,12 @@ const BookingForm: React.FC<BookingFormProps> = ({
   // Handle form submission
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log("Form submitted:", formData);
+    submitForm(formData);
   };
 
   return (
     <form
+      role="form"
       style={{ display: "grid", maxWidth: "200px", gap: "20px" }}
       onSubmit={handleSubmit}
     >

@@ -11,6 +11,7 @@ import Homepage from "./Homepage";
 import Contact from "./Contact";
 import AboutLittleLemon from "./AboutLittleLemon";
 import BookingPage from "./BookingPage";
+import ConfirmedBooking from "./ConfirmedBooking";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/about" element={<AboutLittleLemon />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/booking" element={<BookingPage />} />
+          <Route path="/confirmed" element={<ConfirmedBooking />} />
         </Routes>
       </div>
     </>
